@@ -7,9 +7,8 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] CardController _cardPrefab;
+    [SerializeField] CardController[] _cardPrefabs;
     [SerializeField] Transform _deckPos;
-    [SerializeField] int _id;
 
     private void Start()
     {
@@ -18,7 +17,10 @@ public class GameManager : MonoBehaviour
 
     void CreateCard(Transform deck)
     {
-        CardController cc = Instantiate(_cardPrefab, deck);
-        cc.Init(_id);
+        foreach (var card in _cardPrefabs)
+        {
+            CardController cc = Instantiate(card, _deckPos);
+            cc.Init(card.Id);
+        }
     }
 }

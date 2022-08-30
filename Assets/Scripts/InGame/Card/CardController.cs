@@ -8,10 +8,12 @@ using UnityEngine;
 public class CardController : MonoBehaviour
 {
     CardData _cardData;
+    [SerializeField] int _id;
+    public int Id => _id;
 
     public void Init(int id)
     {
-        _cardData = new CardData(id);
+        _cardData = new CardData(_id);
     }
 
     public void OnClick()
