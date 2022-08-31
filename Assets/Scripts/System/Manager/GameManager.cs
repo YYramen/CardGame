@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         CreateCard(_deckPos);
     }
 
-    void CreateCard(Transform deck)
+    private void CreateCard(Transform deck)
     {
         foreach (var card in _cardPrefabs)
         {
