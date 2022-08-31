@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// カードのパラメータ及びImageを設定するためのScriptableObject
+/// </summary>
 [CreateAssetMenu]
 public class CardParamsAsset : ScriptableObject
 {
