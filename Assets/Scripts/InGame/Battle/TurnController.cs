@@ -23,7 +23,7 @@ public class TurnController : MonoBehaviour
     {
         //ステートの初期化
         StateProcessor.State.Value = StatePlayerTurn;
-        StatePlayerTurn.ExecAction = PlayerTurn;
+        StatePlayerTurn.ExecAction = TurnChange;
         StateEnemyTurn.ExecAction = EnemyTurn;
         StateResultTurn.ExecAction = ResultTurn;
 
@@ -39,9 +39,9 @@ public class TurnController : MonoBehaviour
             .AddTo(this);
     }
 
-    public void PlayerTurn()
+    public void TurnChange()
     {
-        Debug.Log("StateがPlayerTurnに状態遷移しました。");
+        StateProcessor.State.Value.ExecAction = TurnChange;
     }
 
     public void EnemyTurn()
