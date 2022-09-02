@@ -11,7 +11,7 @@ using TurnState;
 public class TurnController : MonoBehaviour
 {
     //変更前のステート名
-    private string _prevStateName;
+    string _prevStateName;
 
     //ステート
     public StateProcessor StateProcessor { get; set; } = new StateProcessor();
@@ -23,7 +23,7 @@ public class TurnController : MonoBehaviour
     {
         //ステートの初期化
         StateProcessor.State.Value = StatePlayerTurn;
-        StatePlayerTurn.ExecAction = TurnChange;
+        StatePlayerTurn.ExecAction = PlayerTurn;
         StateEnemyTurn.ExecAction = EnemyTurn;
         StateResultTurn.ExecAction = ResultTurn;
 
@@ -39,19 +39,19 @@ public class TurnController : MonoBehaviour
             .AddTo(this);
     }
 
-    public void TurnChange()
+    public void PlayerTurn()
     {
-        StateProcessor.State.Value.ExecAction = TurnChange;
+        Debug.Log("StateがPlayerTurnに遷移した");
     }
 
     public void EnemyTurn()
     {
-        Debug.Log("StateがEnemyTurnに状態遷移しました。");
+        Debug.Log("StateがEnemyTurnに遷移した");
     }
 
     public void ResultTurn()
     {
-        Debug.Log("StateがResultに状態遷移しました。");
+        Debug.Log("StateがResultに遷移した");
     }
 
 }

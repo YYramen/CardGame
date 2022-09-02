@@ -15,7 +15,7 @@ namespace TurnState
     public class StateProcessor
     {
         //ステート本体
-        public ReactiveProperty<TurnrState> State { get; set; } = new ReactiveProperty<TurnrState>();
+        public ReactiveProperty<TurnState> State { get; set; } = new ReactiveProperty<TurnState>();
 
         //実行ブリッジ
         public void Execute() => State.Value.Execute();
@@ -24,7 +24,7 @@ namespace TurnState
     /// <summary>
     /// ステートのクラス
     /// </summary>
-    public abstract class TurnrState
+    public abstract class TurnState
     {
         //デリゲート
         public Action ExecAction { get; set; }
@@ -44,7 +44,7 @@ namespace TurnState
     /// <summary>
     /// プレイヤーのターン
     /// </summary>
-    public class TurnStatePlayer : TurnrState
+    public class TurnStatePlayer : TurnState
     {
         public override string GetStateName()
         {
@@ -55,7 +55,7 @@ namespace TurnState
     /// <summary>
     /// エネミーのターン
     /// </summary>
-    public class TurnStateEnemy : TurnrState
+    public class TurnStateEnemy : TurnState
     {
         public override string GetStateName()
         {
@@ -66,7 +66,7 @@ namespace TurnState
     /// <summary>
     /// リザルト
     /// </summary>
-    public class TurnStateResult : TurnrState
+    public class TurnStateResult : TurnState
     {
         public override string GetStateName()
         {
