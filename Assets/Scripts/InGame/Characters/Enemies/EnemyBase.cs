@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// プレイヤーのパラメーター関係
+/// 敵の基底クラス
 /// </summary>
-[Serializable]
-public class PlayerData
+public class EnemyBase : MonoBehaviour
 {
     
 }

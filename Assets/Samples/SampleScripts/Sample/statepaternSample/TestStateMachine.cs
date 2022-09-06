@@ -8,6 +8,10 @@ public class TestStateMachine : StateMachineBase<TestStateMachine>
 	{
 		ChangeState(new TestStateMachine.Neutral(this));
 	}
+    private void Update()
+    {
+		
+    }
 
 	private class Neutral : StateBase<TestStateMachine>
 	{
@@ -16,9 +20,12 @@ public class TestStateMachine : StateMachineBase<TestStateMachine>
 		}
 		public override void OnEnterState()
 		{
-			Debug.Log("<color=red>OnEnter:Neutral!</color>");
+			
 		}
-		
+		public override void OnUpdate()
+		{
+			
+		}
 	}
 
 	private class Up : StateBase<TestStateMachine>
@@ -28,9 +35,12 @@ public class TestStateMachine : StateMachineBase<TestStateMachine>
 		}
 		public override void OnEnterState()
 		{
-			Debug.Log("<color=blue>OnEnter:Up!</color>");
+			
 		}
-		
+		public override void OnUpdate()
+		{
+			
+		}
 	}
 
 	private class Left : StateBase<TestStateMachine>
@@ -40,8 +50,11 @@ public class TestStateMachine : StateMachineBase<TestStateMachine>
 		}
 		public override void OnEnterState()
 		{
-			Debug.Log("<color=purple>OnEnter:Left!</color>");
+			
 		}
-		
+		public override void OnUpdate()
+		{
+			
+		}
 	}
 }

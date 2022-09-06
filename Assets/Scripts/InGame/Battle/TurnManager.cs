@@ -8,5 +8,5 @@ using UnityEngine;
 /// </summary>
 public class TurnManager : MonoBehaviour
 {
-    
+
 }

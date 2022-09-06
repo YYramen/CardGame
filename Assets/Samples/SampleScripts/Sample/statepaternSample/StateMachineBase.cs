@@ -14,6 +14,7 @@ public class StateMachineBase<T> : MonoBehaviour where T : StateMachineBase<T>
         return bRet;
     }
 
+
     private void Update()
     {
         if (m_nextState != null)
