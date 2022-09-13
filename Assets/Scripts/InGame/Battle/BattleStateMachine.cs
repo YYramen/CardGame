@@ -9,7 +9,7 @@ public class BattleStateMachine : BattleStateMachineBase<BattleStateMachine>
         ChangeState(new EnterBattle(this));
     }
 
-    private class EnterBattle : BattleStateBase<BattleStateMachine>
+    public class EnterBattle : BattleStateBase<BattleStateMachine>
     {
         public EnterBattle(BattleStateMachine machine) : base(machine)
         {
@@ -28,7 +28,7 @@ public class BattleStateMachine : BattleStateMachineBase<BattleStateMachine>
         }
     }
 
-    private class PlayerTurn : BattleStateBase<BattleStateMachine>
+    public class PlayerTurn : BattleStateBase<BattleStateMachine>
     {
         public PlayerTurn(BattleStateMachine machine) : base(machine)
         {
@@ -47,7 +47,7 @@ public class BattleStateMachine : BattleStateMachineBase<BattleStateMachine>
         }
     }
 
-    private class EnemyTurn : BattleStateBase<BattleStateMachine>
+    public class EnemyTurn : BattleStateBase<BattleStateMachine>
     {
         public EnemyTurn(BattleStateMachine machine) : base(machine)
         {
@@ -66,7 +66,7 @@ public class BattleStateMachine : BattleStateMachineBase<BattleStateMachine>
         }
     }
 
-    private class ExitBattle : BattleStateBase<BattleStateMachine>
+    public class ExitBattle : BattleStateBase<BattleStateMachine>
     {
         public ExitBattle(BattleStateMachine machine) : base(machine)
         {
