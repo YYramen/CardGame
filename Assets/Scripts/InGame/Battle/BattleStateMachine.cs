@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ターンを管理するステートマシンコンポーネント
+/// </summary>
 public class BattleStateMachine : BattleStateMachineBase<BattleStateMachine>
 {
+    // TODO: ボタンを押したときにステートが遷移するようにする(遷移の順番は固定)
     private void Start()
     {
         ChangeState(new EnterBattle(this));
