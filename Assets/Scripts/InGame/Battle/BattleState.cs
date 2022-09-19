@@ -8,7 +8,7 @@ namespace BattleState
     /// ステートマシンクラス
     /// 状態遷移の定義版
     /// </summary>
-    public class StateMachine<T>
+    public class StateMachine<TOwner>
     {
         /// <summary>
         /// ステート基底クラス
@@ -16,8 +16,8 @@ namespace BattleState
         /// </summary>
         public abstract class StateBase
         {
-            public StateMachine<T> StateMachine;
-            protected T Owner => StateMachine.Owner;
+            public StateMachine<TOwner> StateMachine;
+            protected TOwner Owner => StateMachine.Owner;
             // ステート遷移情報
             public readonly Dictionary<int, StateBase> Transitions = new Dictionary<int, StateBase>(); 
 
@@ -25,7 +25,7 @@ namespace BattleState
             public virtual void OnUpdate() { }
             public virtual void OnEnd() { }
         }
-        private T Owner { get; }
+        private TOwner Owner { get; }
         // 現在のステート
         private StateBase _currentState;
         // 全てのステート定義
@@ -35,7 +35,7 @@ namespace BattleState
         /// コンストラクタ
         /// </summary>
         /// <param name="owner">StateMachineを使用するOwner</param>
-        public StateMachine(T owner)
+        public StateMachine(TOwner owner)
         {
             Owner = owner;
         }
