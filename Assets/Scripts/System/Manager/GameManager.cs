@@ -7,20 +7,37 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] CardController[] _cardPrefabs;
-    [SerializeField] Transform _deckPos;
+    public static GameManager Instance;
 
-    private void Start()
+    [SerializeField] Transform _deckPos;
+    [SerializeField] CardController[] _cardPrefabs;
+    [SerializeField] int _currentCoins = 0;
+
+    private void Awake()
     {
-        CreateCard(_deckPos);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 
-    private void CreateCard(Transform deck)
+    /// <summary>
+    /// プレイヤーのターン開始時に呼ぶカードを引く処理
+    /// </summary>
+    public void TakeCard()
     {
-        foreach (var card in _cardPrefabs)
+        foreach(var card in _cardPrefabs)
         {
             CardController cc = Instantiate(card, _deckPos);
             cc.Init(card.Id);
         }
+    }
+
+    /// <summary>
+    /// プレイヤーのターン終了時に呼ばれるカードを削除する処理
+    /// </summary>
+    public void RemoveCards()
+    {
+
     }
 }

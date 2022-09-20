@@ -949,7 +949,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 47
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -960,7 +960,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u304A\u98A8\u5442\u306E\u30BF\u30FC\u30F3"
+  m_Text: "\u30D7\u30EC\u30A4\u30E4\u30FC\u306E\u30BF\u30FC\u30F3"
 --- !u!222 &407244128
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2297,10 +2297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd63c2deb0abcd249ae864ce12cc23d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deckPos: {fileID: 217007564}
   _cardPrefabs:
   - {fileID: 1324144723347720696, guid: 6734aeebd88261b4bbd46d12acdba738, type: 3}
   - {fileID: 7596641366860957726, guid: 4501ddba4ac7ac44f9ad5b102917970b, type: 3}
-  _deckPos: {fileID: 217007564}
+  _currentCoins: 0
 --- !u!1 &1302756393
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BattleState;
+using TMPro.EditorUtilities;
 
-
+/// <summary>
+/// ステートのタイプ
+/// </summary>
 public enum StateType : int
 {
     PlayerTurn = 0,
     EnemyTurn = 1,
     Result = 2,
 }
+
+/// <summary>
+/// ステートマシンの実行部分
+/// </summary>
 public class BattleStateMachine : MonoBehaviour
 {
-    
-
     StateMachine<BattleStateMachine> _stateMachine;
+
+    
 
     private void Start()
     {
@@ -42,6 +49,8 @@ public class BattleStateMachine : MonoBehaviour
         public override void OnEnter()
         {
             base.OnEnter();
+
+            GameManager.Instance.TakeCard();
         }
 
         public override void OnUpdate()
