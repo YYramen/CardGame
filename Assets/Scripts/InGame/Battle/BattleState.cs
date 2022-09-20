@@ -6,7 +6,6 @@ namespace BattleState
 {
     /// <summary>
     /// ステートマシンクラス
-    /// 状態遷移の定義版
     /// </summary>
     public class StateMachine<TOwner>
     {
@@ -18,18 +17,15 @@ namespace BattleState
         {
             public StateMachine<TOwner> StateMachine;
             protected TOwner Owner => StateMachine.Owner;
-            // ステート遷移情報
-            public readonly Dictionary<int, StateBase> Transitions = new Dictionary<int, StateBase>(); 
 
-            public virtual void OnStart() { }
-            public virtual void OnUpdate() { }
-            public virtual void OnEnd() { }
+            public virtual void OnEnter() { Debug.Log($"{this} のステートに入った"); }
+            public virtual void OnUpdate() { Debug.Log($"{this} のステートに入っている"); }
+            public virtual void OnExit() { Debug.Log($"{this} のステートを抜けた"); }
         }
         private TOwner Owner { get; }
-        // 現在のステート
-        private StateBase _currentState;
-        // 全てのステート定義
-        private readonly LinkedList<StateBase> _states = new LinkedList<StateBase>(); 
+        private StateBase _currentState; // 現在のステート
+        private StateBase _prevState;    // 前のステート
+        private readonly Dictionary<int, StateBase> _states = new Dictionary<int, StateBase>(); // 全てのステート定義
 
         /// <summary>
         /// コンストラクタ
@@ -41,66 +37,40 @@ namespace BattleState
         }
 
         /// <summary>
-        /// ステート追加
+        /// ステート定義登録
+        /// ステートマシン初期化後にこのメソッドを呼ぶ
         /// </summary>
-        private T Add<T>() where T : StateBase, new()
+        /// <param name="stateId">ステートID</param>
+        /// <typeparam name="T">ステート型</typeparam>
+        public void Add<T>(int stateId) where T : StateBase, new()
         {
-            // ステートを追加
+            if (_states.ContainsKey(stateId))
+            {
+                Debug.LogError("ステートがすでに定義されています : " + stateId);
+                return;
+            }
+            // ステート定義を登録
             var newState = new T
             {
                 StateMachine = this
             };
-            _states.AddLast(newState);
-            return newState;
-        }
-
-        /// <summary>
-        /// ステート取得、無ければ追加
-        /// </summary>
-        private T GetOrAdd<T>() where T : StateBase, new()
-        {
-            // 追加されていれば返却
-            foreach (var state in _states)
-            {
-                if (state is T result)
-                {
-                    return result;
-                }
-            }
-            // 無ければ追加
-            return Add<T>();
-        }
-
-        /// <summary>
-        /// イベントIDに対応した遷移情報を登録
-        /// </summary>
-        /// <param name="eventId">イベントID</param>
-        /// <typeparam name="TFrom">遷移元ステート</typeparam>
-        /// <typeparam name="TTo">遷移先ステート</typeparam>
-        public void AddTransition<TFrom, TTo>(int eventId)
-            where TFrom : StateBase, new()
-            where TTo : StateBase, new()
-        {
-            // 既にイベントIDが登録済ならエラー
-            var from = GetOrAdd<TFrom>();
-            if (from.Transitions.ContainsKey(eventId))
-            {
-                Debug.LogError("already register eventId!! : " + eventId);
-                return;
-            }
-            // 指定のイベントIDで追加する
-            var to = GetOrAdd<TTo>();
-            from.Transitions.Add(eventId, to);
+            _states.Add(stateId, newState);
         }
 
         /// <summary>
         /// ステート開始処理
         /// </summary>
-        /// <typeparam name="T">開始するステート</typeparam>
-        public void OnStart<T>() where T : StateBase, new()
+        /// <param name="stateId">ステートID</param>
+        public void OnStart(int stateId)
         {
-            _currentState = GetOrAdd<T>();
-            _currentState.OnStart();
+            if (!_states.TryGetValue(stateId, out var nextState))
+            {
+                Debug.LogError("ステートのIDが設定されていません : " + stateId);
+                return;
+            }
+            // 現在のステートに設定して処理を開始
+            _currentState = nextState;
+            _currentState.OnEnter();
         }
 
         /// <summary>
@@ -112,22 +82,36 @@ namespace BattleState
         }
 
         /// <summary>
-        /// イベント発行
-        /// 指定されたIDのステートに切り替える
+        /// 次のステートに切り替える
         /// </summary>
-        /// <param name="eventId">イベントID</param>
-        public void DispatchEvent(int eventId)
+        /// <param name="stateId">切り替えるステートID</param>
+        public void ChangeState(int stateId)
         {
-            // イベントIDからステート取得
-            if (!_currentState.Transitions.TryGetValue(eventId, out var nextState))
+            if (!_states.TryGetValue(stateId, out var nextState))
             {
-                Debug.LogError("not found eventId!! : " + eventId);
+                Debug.LogError("ステートのIDが設定されていません : " + stateId);
                 return;
             }
+            // 前のステートを保持
+            _prevState = _currentState;
             // ステートを切り替える
-            _currentState.OnEnd();
-            nextState.OnStart();
+            _currentState.OnExit();
             _currentState = nextState;
+            _currentState.OnEnter();
+        }
+
+        /// <summary>
+        /// 前回のステートに切り替える
+        /// </summary>
+        public void ChangePrevState()
+        {
+            if (_prevState == null)
+            {
+                Debug.LogError("前回のステートが参照できません");
+                return;
+            }
+            // 前のステートと現在のステートを入れ替える
+            (_prevState, _currentState) = (_currentState, _prevState);
         }
     }
 }

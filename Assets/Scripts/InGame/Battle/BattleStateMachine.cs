@@ -3,25 +3,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using BattleState;
 
+
+public enum StateType : int
+{
+    PlayerTurn = 0,
+    EnemyTurn = 1,
+    Result = 2,
+}
 public class BattleStateMachine : MonoBehaviour
 {
-    private enum StateType
-    {
-        PlayerTurn,
-        EnemyTurn,
-        Result,
-    }
+    
 
     StateMachine<BattleStateMachine> _stateMachine;
 
     private void Start()
     {
-        //_stateMachine = new StateMachine<BattleStateMachine>(this);
+        _stateMachine = new StateMachine<BattleStateMachine>(this);
 
-        //_stateMachine.AddTransition<PlayerTurn,EnemyTurn>((int)StateType.PlayerTurn);
-        //_stateMachine.AddTransition<EnemyTurn,PlayerTurn>((int)StateType.EnemyTurn);
-        //_stateMachine.AddTransition<EnemyTurn, Result>((int)StateType.Result);
-        //// ステート開始
-        //_stateMachine.OnStart<PlayerTurn>();
+        _stateMachine.Add<PlayerTurn>((int)StateType.PlayerTurn);
+        _stateMachine.Add<EnemyTurn>((int)StateType.EnemyTurn);
+        _stateMachine.Add<Result>((int)StateType.Result);
+
+        _stateMachine.OnStart((int)StateType.PlayerTurn);
+    }
+
+    private void Update()
+    {
+        _stateMachine.OnUpdate();
+    }
+
+    public void ChangeState(int nextstate)
+    {
+        _stateMachine.ChangeState(nextstate);
+    }
+
+    private class PlayerTurn : StateMachine<BattleStateMachine>.StateBase
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
+    }
+
+    private class EnemyTurn : StateMachine<BattleStateMachine>.StateBase
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
+    }
+
+    private class Result : StateMachine<BattleStateMachine>.StateBase
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
     }
 }
