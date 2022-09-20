@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] Transform _deckPos;
-    [SerializeField] CardController[] _cardPrefabs;
+    [SerializeField] List<CardController> _cardPrefabs = new List<CardController> ();
     [SerializeField] int _currentCoins = 0;
 
     private void Awake()
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// プレイヤーのターン終了時に呼ばれるカードを削除する処理
+    /// プレイヤーのターン終了時に呼ばれる,カードを捨てデッキに移動させる処理
     /// </summary>
     public void RemoveCards()
     {

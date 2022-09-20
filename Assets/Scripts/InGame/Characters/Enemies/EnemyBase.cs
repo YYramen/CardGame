@@ -7,5 +7,13 @@ using UnityEngine;
 /// </summary>
 public class EnemyBase : MonoBehaviour
 {
-    
+    public void Excute(int id)
+    {
+        Move();
+    }
+
+    public virtual void Move()
+    {
+        Debug.Log($"{this} ‚ÌMoveŠÖ”‚ªŒÄ‚Î‚ê‚Ü‚µ‚½");
+    }
 }
