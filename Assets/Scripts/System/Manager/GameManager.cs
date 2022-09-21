@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             CardController cc = Instantiate(_deckCards[i], _deckPos);
-            cc.Init(_deckCards[i].Id);
+            cc.Init();
             Debug.Log($"デッキからカードを取得");
         }
     }

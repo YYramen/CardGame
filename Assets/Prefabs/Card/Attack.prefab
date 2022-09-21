@@ -1,5 +1,85 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &784297859773997040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8603209237004415530}
+  - component: {fileID: 4462956797720826333}
+  - component: {fileID: 166487613295053147}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8603209237004415530
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784297859773997040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2446993753937559487}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0010056, y: -110.73}
+  m_SizeDelta: {x: 195.23, y: 42.261}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4462956797720826333
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784297859773997040}
+  m_CullTransparentMesh: 1
+--- !u!114 &166487613295053147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784297859773997040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 16
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &2446993752900770427
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +335,7 @@ GameObject:
   - component: {fileID: 2446993753937559472}
   - component: {fileID: 2446993753937559474}
   - component: {fileID: 2446993753937559476}
+  - component: {fileID: 7761437648383519379}
   - component: {fileID: 2446993753937559475}
   m_Layer: 5
   m_Name: Attack
@@ -278,6 +359,7 @@ RectTransform:
   - {fileID: 2446993752900770428}
   - {fileID: 2446993753359974705}
   - {fileID: 2446993753724375218}
+  - {fileID: 8603209237004415530}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -345,10 +427,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2446993753937559486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80471bd297fdc674eb23a7ab8f0b3d78, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c86330b84b49d8409f3aef6d01dcee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 1
+--- !u!114 &7761437648383519379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2446993753937559486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2dd730ca3c5ca459191d84e24d307b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 2446993752900770429}
+  _pointText: {fileID: 2446993753724375219}
+  _costText: {fileID: 2446993753359974706}
+  _desText: {fileID: 166487613295053147}
+  _cardImg: {fileID: 2446993753937559472}
 --- !u!114 &2446993753937559475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +484,22 @@ MonoBehaviour:
         - m_Target: {fileID: 2446993753937559474}
           m_TargetAssemblyTypeName: Clicker, Assembly-CSharp
           m_MethodName: Drag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 6
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2446993753937559474}
+          m_TargetAssemblyTypeName: Clicker, Assembly-CSharp
+          m_MethodName: Drop
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

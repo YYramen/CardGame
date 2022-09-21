@@ -39,9 +39,9 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.OnUpdate();
     }
 
-    public void ChangeState(int nextstate)
+    public void ChangeState(int nextState)
     {
-        _stateMachine.ChangeState(nextstate);
+        _stateMachine.ChangeState(nextState);
     }
 
     private class PlayerTurn : StateMachine<BattleStateMachine>.StateBase

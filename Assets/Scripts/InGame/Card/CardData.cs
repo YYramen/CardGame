@@ -1,13 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// カードのパラメータ及びImageを設定するためのScriptableObject
+/// Resources/Cardsフォルダ内の情報を取得するコンポーネント
 /// </summary>
-[CreateAssetMenu]
-public class CardParamsAsset : ScriptableObject
+
+public class CardData
 {
     [SerializeField] int _id;
     public int Id => _id;
@@ -21,4 +22,20 @@ public class CardParamsAsset : ScriptableObject
     public string Description => _description;
     [SerializeField] Image _cardImage;
     public Image CardImage => _cardImage;
+
+    /// <summary>
+    /// 情報を取得して変数に代入する
+    /// </summary>
+    /// <param name="id">カードのID</param>
+    public void CardModel(int id)
+    {
+        CardParamsAsset param = Resources.Load<CardParamsAsset>($"Cards/{id}");
+
+        _name = param.Name;
+        _cost = param.Cost;
+        _effectPoint = param.EffectPoint;
+        _description = param.Description;
+        _cardImage = param.CardImage;
+    }
 }
+

@@ -28,6 +28,13 @@ public class Clicker : MonoBehaviour
     /// </summary>
     public void Drop()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float rayDis = 100f;
+        RaycastHit hit;
 
+        if(Physics.Raycast(ray, out hit, rayDis))
+        {
+            Debug.Log($"{hit.collider.name} にカードを置いた");
+        }
     }
 }
