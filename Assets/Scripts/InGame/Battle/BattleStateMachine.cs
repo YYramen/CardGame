@@ -41,7 +41,7 @@ public class BattleStateMachine : MonoBehaviour
         public override void OnEnter()
         {
             base.OnEnter();
-
+            GameManager.Instance.RefillCost();
             GameManager.Instance.TakeCard();
         }
 
@@ -53,6 +53,7 @@ public class BattleStateMachine : MonoBehaviour
         public override void OnExit()
         {
             base.OnExit();
+            GameManager.Instance.RemoveCards();
         }
     }
 

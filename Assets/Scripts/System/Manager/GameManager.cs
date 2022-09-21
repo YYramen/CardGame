@@ -11,9 +11,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] Transform _deckPos;
-    [SerializeField] List<CardController> _deckCards = new List<CardController> ();
+    [SerializeField] List<CardController> _deckCards = new List<CardController>();
     [SerializeField] List<CardController> _recycleCards = new List<CardController>();
-    [SerializeField] int _currentCoins = 0;
+
+    [SerializeField] Player _player;
+
+    [SerializeField] List<Warrior> _enemies = new List<Warrior>();
 
     private void Awake()
     {
@@ -23,12 +26,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// プレイヤーのターン開始時に呼ぶコストをリセットする処理
+    /// </summary>
+    public void RefillCost()
+    {
+        _player.ResetCost();
+    }
+
     /// <summary>
     /// プレイヤーのターン開始時に呼ぶカードを引く処理
     /// </summary>
     public void TakeCard()
     {
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             CardController cc = Instantiate(_deckCards[i], _deckPos);
             cc.Init();
@@ -41,14 +53,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RemoveCards()
     {
-        for(int i = 0; i < _deckCards.Count; i++)
+        for (int i = 0; i < _deckCards.Count; i++)
         {
             _recycleCards.Add(_deckCards[i]);
         }
 
-        foreach(Transform card in _deckPos.transform)
+        foreach (Transform card in _deckPos.transform)
         {
             Destroy(card.gameObject);
         }
+        Debug.Log("カードを捨て札に移動しました");
     }
 }
