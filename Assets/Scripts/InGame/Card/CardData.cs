@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Resources/Cardsフォルダ内の情報を取得するコンポーネント
+/// カードの”モデル”となる。Resources/Cardsフォルダ内の情報を取得するコンポーネント
 /// </summary>
 
 public class CardData

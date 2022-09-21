@@ -41,7 +41,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RemoveCards()
     {
-        GameObject[] cards = new GameObject[_deckCards.Count];
-        
+        for(int i = 0; i < _deckCards.Count; i++)
+        {
+            _recycleCards.Add(_deckCards[i]);
+        }
+
+        foreach(Transform card in _deckPos.transform)
+        {
+            Destroy(card.gameObject);
+        }
     }
 }

@@ -37,6 +37,15 @@ public class BattleStateMachine : MonoBehaviour
     private void Update()
     {
         _stateMachine.OnUpdate();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeState(0);
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            ChangeState(1);
+        }
     }
 
     public void ChangeState(int nextState)
