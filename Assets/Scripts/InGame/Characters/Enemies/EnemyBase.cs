@@ -16,4 +16,9 @@ public class EnemyBase : MonoBehaviour
     {
         Debug.Log($"{this} ‚ÌMoveŠÖ”‚ªŒÄ‚Î‚ê‚Ü‚µ‚½");
     }
+
+    public virtual void Damage(int value)
+    {
+        Debug.Log($"{this} ‚ÌDamageŠÖ”‚ªŒÄ‚Î‚ê‚Ü‚µ‚½");
+    }
 }

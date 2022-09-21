@@ -9,8 +9,10 @@ using UnityEngine;
 [Serializable]
 public class Player : MonoBehaviour
 {
-    [SerializeField, Tooltip("HP")] int _hp = 50;
+    [SerializeField, Tooltip("HP")] int _hp = 20;
     public int HP => _hp;
+
+    [SerializeField, Tooltip("ƒRƒXƒg")] byte cost = 3;
 
     [SerializeField, Tooltip("ŠŽ‹à")] int _money;
     public int Money => _money;

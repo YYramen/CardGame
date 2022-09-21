@@ -14,7 +14,11 @@ public class Warrior : EnemyBase
     public override void Move()
     {
         base.Move();
+        Debug.Log($"{this} ‚ª“®‚¢‚Ä‚¢‚é");
+    }
 
-
+    public override void Damage(int value)
+    {
+        _hp -= value;
     }
 }

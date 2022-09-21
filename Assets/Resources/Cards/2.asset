@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2858bf837f3c74abe16f8256cd45d9, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  _name: "\u30AC\u30FC\u30C9"
-  _description: "\u9632\u5FA1\u3059\u308B"
   _id: 2
+  _name: "\u30AC\u30FC\u30C9"
   _cost: 1
   _effectPoint: 1
+  _description: "\u9632\u5FA1\u529B"
   _cardImage: {fileID: 0}
