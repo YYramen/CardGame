@@ -22,4 +22,12 @@ public class Clicker : MonoBehaviour
     {
         this.transform.position = Input.mousePosition;
     }
+
+    /// <summary>
+    /// ƒJ[ƒh‚ğ—£‚µ‚½
+    /// </summary>
+    public void Drop()
+    {
+
+    }
 }

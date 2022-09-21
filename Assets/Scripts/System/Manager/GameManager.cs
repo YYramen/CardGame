@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] Transform _deckPos;
-    [SerializeField] List<CardController> _cardPrefabs = new List<CardController> ();
+    [SerializeField] List<CardController> _deckCards = new List<CardController> ();
+    [SerializeField] List<CardController> _recycleCards = new List<CardController>();
     [SerializeField] int _currentCoins = 0;
 
     private void Awake()
@@ -26,10 +28,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TakeCard()
     {
-        foreach(var card in _cardPrefabs)
+        for(int i = 0; i < 5; i++)
         {
-            CardController cc = Instantiate(card, _deckPos);
-            cc.Init(card.Id);
+            CardController cc = Instantiate(_deckCards[i], _deckPos);
+            cc.Init(_deckCards[i].Id);
+            Debug.Log($"デッキからカードを取得");
         }
     }
 
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RemoveCards()
     {
-
+        GameObject[] cards = new GameObject[_deckCards.Count];
+        
     }
 }

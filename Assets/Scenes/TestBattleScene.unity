@@ -2298,9 +2298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deckPos: {fileID: 217007564}
-  _cardPrefabs:
-  - {fileID: 1324144723347720696, guid: 6734aeebd88261b4bbd46d12acdba738, type: 3}
-  - {fileID: 7596641366860957726, guid: 4501ddba4ac7ac44f9ad5b102917970b, type: 3}
+  _deckCards:
+  - {fileID: 2446993753937559476, guid: 6734aeebd88261b4bbd46d12acdba738, type: 3}
+  - {fileID: 4194939946394940931, guid: 4501ddba4ac7ac44f9ad5b102917970b, type: 3}
+  - {fileID: 2446993753937559476, guid: 6734aeebd88261b4bbd46d12acdba738, type: 3}
+  - {fileID: 4194939946394940931, guid: 4501ddba4ac7ac44f9ad5b102917970b, type: 3}
+  - {fileID: 2446993753937559476, guid: 6734aeebd88261b4bbd46d12acdba738, type: 3}
+  _recycleCards: []
   _currentCoins: 0
 --- !u!1 &1302756393
 GameObject:
