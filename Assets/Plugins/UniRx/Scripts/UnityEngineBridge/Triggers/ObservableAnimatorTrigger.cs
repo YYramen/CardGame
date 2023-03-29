@@ -45,10 +45,5 @@ namespace UniRx.Triggers
                 onAnimatorMove.OnCompleted();
             }
         }
-
-        public object OnStateEnterAsObservable()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
